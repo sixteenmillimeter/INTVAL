@@ -1,0 +1,1 @@
+Arduino software for driving a solenoid-based intervalometer for the Bolex 16mm moviecamera
