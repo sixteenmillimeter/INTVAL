@@ -56,22 +56,27 @@ void setup(){
 
 void loop(){
   aonc = 0; bonc = 0; conc = 0; donc = 0;
- if(Serial.available()>0){
-    incomingByte = Serial.read();
-   if(incomingByte==51){  //0
+   if(Serial.available()>0){
+      incomingByte = Serial.read();
+   }
+   if(incomingByte==51){  //3
      bD();
+     incomingByte = 0;
    }
-      if(incomingByte==50){
+      if(incomingByte==50){//2
      bC(1);
+     incomingByte = 0;
    }
-      if(incomingByte==49){
+      if(incomingByte==49){//1
      bB(1);
+     incomingByte = 0;
    }
-      if(incomingByte==48){
+      if(incomingByte==48){//0
      bA();
+     incomingByte = 0;
    }
-  Serial.flush();
-}
+   
+
   
   
 
@@ -121,11 +126,8 @@ void ease(int pin, int L){
     delay(1);
   }
 
-  Serial.print("Frame[");
-  Serial.print(ovrl);
-  Serial.print("] : ");
+  Serial.print("cam:");
   Serial.println(millis()-then);
-  Serial.flush();
 
 }
 // ON/OFF
@@ -182,7 +184,8 @@ void bD(){
     blinker(deBug,length);
     donc++;
   }
-  delay(5);
+  delay(400);
+
 }
 
 
